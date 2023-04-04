@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/Assets/style.css"/>
+    <title>Weather</title>
+</head>
+<body>
+    <form method="post" action="http://localhost:5000/weather">
+        <table cellspacing="20">
+            <tr>
+                <td>{% if icon == "sun" %}
+                    <img src="/Assets/images/sun.png" width="300" height="300" alt="cloud-img">
+                    {%elif icon == "cloud" %}
+                    <img src="/Assets/images/cloud.png" width="300" height="300" alt="cloud-img">
+                    {%elif icon == "cloud_sun" %}
+                    <img src="/Assets/images/cloud_sun.png" width="300" height="300" alt="cloud-img">
+                    {%elif icon == "cloud_rain" %}
+                    <img src="/Assets/images/cloud_rain.png" width="300" height="300" alt="cloud-img">
+                    {%elif icon == "snow" %}
+                    <img src="/Assets/images/snow.png" width="300" height="300" alt="cloud-img">
+                    {% else %}
+                    <img src="/Assets/images/thunderstorm.png" width="300" height="300" alt="cloud-img">
+                    {% endif %}
+                </td>
+                <td><h1>Zagreb</h1>
+                <p>{{today_weather}}</p>
+                <p>Temperature max: {{today_max}}°C</p>
+                <p>Temperature min: {{today_min}}°C</p>
+                <p>Precipitation: {{precipitation}} mm</p>
+                <p>Relative humidity: {{humidity}}%</p>
+                <p>Wind speed: {{wind_speed}} km/h</p>
+                <p>Wind direction: {{wind_direction}}</p>
+                </td>
+                <td><h3>{{today}}</h3></td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h3>Next 3 days</h3>
+        <table cellspacing="10">
+            <tr>
+                <td><b>{{tomorrow}}</b></td>
+                <td>{{t_weather1}}, max temp: {{tomorrow_temp}}°</td>
+            </tr>
+            <tr>
+                <td><b>{{tomorrow1}}</b></td>
+                <td>{{t_weather2}}, max temp: {{max_temp2}}°</td>
+            </tr>
+            <tr>
+                <td><b>{{tomorrow2}}</b></td>
+                <td>{{t_weather3}}, max temp: {{max_temp3}}°</td>
+            </tr>
+        </table>
+        <hr>
+    </form>
+    <a href="{{url_for('history')}}">History</a>
+    <a href="{{url_for('users')}}">Users</a>
+    <a href="{{url_for('login')}}">Log out</a>
+    
+</body>
+</html>

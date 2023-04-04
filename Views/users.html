@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/Assets/style.css"/>
+    <title>Users</title>
+</head>
+<br>
+<body>
+    <h2>Registered users</h2>
+    <form method="post" action="http://localhost:5000/users">
+        <div id="Container">
+            {%for user in users%}
+            <p>
+                ID : {{user.AdministratorID}}
+                <br/> Name : {{user.Name}}
+                <br/> Surname : {{user.Surname}}
+                <br/> Email : {{user.Email}}
+            </p>
+            <br/> {%endfor%}
+        </div>
+    </form>
+    <a href="{{url_for('weather')}}">Back to weather</a>
+    
+</body>
+</html>
